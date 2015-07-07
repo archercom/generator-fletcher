@@ -1,4 +1,4 @@
-name = <%= projectName.slug %>
+name = <%= projectName.title %>
 description = <%= description %>
 screenshot = images/screenshot.png
 
@@ -23,8 +23,8 @@ stylesheets[all][] = css/foundation.min.css
 scripts[] = js/scripts.js
 
 ; Block loading of Foundation js
-scripts[] = js/libs.min.js
-scripts[] = js/foundation.min.js
+;scripts[] = js/libs.min.js
+;scripts[] = js/foundation.min.js
 
 
 ; Regions

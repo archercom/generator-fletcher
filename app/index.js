@@ -120,7 +120,15 @@ module.exports = yeoman.generators.Base.extend({
       // individual files
       // ----------------------------------------
       // .info file
-      this.template('arrow.info');
+      this.fs.copyTpl(
+        this.templatePath('arrow.info'),
+        this.destinationPath(this.projectName.slug + '.info'),
+        {
+          projectName: this.projectName,
+          description: this.description
+        }
+      );
+
 
       // bower file
       this.template('bower.json');
