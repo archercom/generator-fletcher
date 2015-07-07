@@ -122,7 +122,7 @@ module.exports = yeoman.generators.Base.extend({
       // .info file
       this.fs.copyTpl(
         this.templatePath('arrow.info'),
-        this.destinationPath(this.projectName.slug + '.info'),
+        this.destinationPath(this.projectName.underscored + '.info'),
         {
           projectName: this.projectName,
           description: this.description
