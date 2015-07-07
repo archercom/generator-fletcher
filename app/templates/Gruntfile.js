@@ -12,7 +12,7 @@ module.exports = function(grunt) {
         images_dir: 'images/',
         jade_dir: 'jade/',
         js_files: [
-            'js/arrow/init.js',
+            'js/<%= projectName.slug %>/init.js',
         ],
         js_vendor_files: [
             'bower_components/modernizr/modernizr.js',
@@ -60,9 +60,8 @@ module.exports = function(grunt) {
         project: project,
 
         banner: '/*!\n' +
-                ' * <%= pkg.name %> v<%= pkg.version %> (<%= pkg.homepage %>)\n' +
-                ' * Copyright 2014-<%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
-                ' * Licensed under <%= pkg.license.type %> (<%= pkg.license.url %>)\n' +
+                ' * <%%= pkg.name %> v<%%= pkg.version %> (<%%= pkg.homepage %>)\n' +
+                ' * Copyright 2014-<%%= grunt.template.today("yyyy") %> <%%= pkg.author %>\n' +
                 ' */\n',
 
 
@@ -75,19 +74,19 @@ module.exports = function(grunt) {
                 sourceMap: true
             },
             build: {
-                src: '<%= project.js_files %>',
-                dest: '<%= project.output.folder %><%= project.output.js_folder %><%= project.output.js_filename %>'
+                src: '<%%= project.js_files %>',
+                dest: '<%%= project.output.folder %><%%= project.output.js_folder %><%%= project.output.js_filename %>'
             },
             vendors: {
-                src: '<%= project.js_vendor_files %>',
-                dest: '<%= project.output.folder %><%= project.output.js_folder %><%= project.output.js_vendor_filename %>'
+                src: '<%%= project.js_vendor_files %>',
+                dest: '<%%= project.output.folder %><%%= project.output.js_folder %><%%= project.output.js_vendor_filename %>'
             },
             deploy: {
                 src: [
-                    '<%= project.output.folder %><%= project.output.js_folder %><%= project.output.js_vendor_filename %>',
-                    '<%= project.output.folder %><%= project.output.js_folder %><%= project.output.js_filename %>'
+                    '<%%= project.output.folder %><%%= project.output.js_folder %><%%= project.output.js_vendor_filename %>',
+                    '<%%= project.output.folder %><%%= project.output.js_folder %><%%= project.output.js_filename %>'
                 ],
-                dest: '<%= project.output.folder %><%= project.output.js_folder %><%= project.output.js_master_filename %>'
+                dest: '<%%= project.output.folder %><%%= project.output.js_folder %><%%= project.output.js_master_filename %>'
             }
         },
 
@@ -97,8 +96,8 @@ module.exports = function(grunt) {
                 preserveComments: 'none'
             },
             deploy: {
-                src: '<%= project.output.folder %><%= project.output.js_folder %><%= project.output.js_master_filename %>',
-                dest: '<%= project.output.folder %><%= project.output.js_folder %><%= project.output.js_master_filename_minified %>'
+                src: '<%%= project.output.folder %><%%= project.output.js_folder %><%%= project.output.js_master_filename %>',
+                dest: '<%%= project.output.folder %><%%= project.output.js_folder %><%%= project.output.js_master_filename_minified %>'
             }
         },
 
@@ -115,8 +114,8 @@ module.exports = function(grunt) {
             },
             build: {
                 files: {
-                    '<%= project.output.folder %><%= project.output.css_folder %><%= project.output.css_filename %>':
-                        '<%= project.sass_dir %><%= project.sass_filename %>'
+                    '<%%= project.output.folder %><%%= project.output.css_folder %><%%= project.output.css_filename %>':
+                        '<%%= project.sass_dir %><%%= project.sass_filename %>'
                 }
             }
         },
@@ -139,18 +138,18 @@ module.exports = function(grunt) {
                 options: {
                     map: false
                 },
-                src:'<%= project.output.folder %><%= project.output.css_folder %><%= project.output.css_filename %>'
+                src:'<%%= project.output.folder %><%%= project.output.css_folder %><%%= project.output.css_filename %>'
             }
         },
 
         // 3. comb
         csscomb: {
             options: {
-                config: '<%= project.sass_dir %>.csscomb.json'
+                config: '<%%= project.sass_dir %>.csscomb.json'
             },
             build: {
-                src: ['<%= project.output.folder %><%= project.output.css_folder %><%= project.output.css_filename %>'],
-                dest: '<%= project.output.folder %><%= project.output.css_folder %><%= project.output.css_filename %>'
+                src: ['<%%= project.output.folder %><%%= project.output.css_folder %><%%= project.output.css_filename %>'],
+                dest: '<%%= project.output.folder %><%%= project.output.css_folder %><%%= project.output.css_filename %>'
             }
         },
 
@@ -158,9 +157,9 @@ module.exports = function(grunt) {
         // 4. lint
         csslint: {
             options: {
-                csslintrc: '<%= project.sass_dir %>.csslintrc'
+                csslintrc: '<%%= project.sass_dir %>.csslintrc'
             },
-            build: ['<%= project.output.folder %><%= project.output.css_folder %><%= project.output.css_filename %>']
+            build: ['<%%= project.output.folder %><%%= project.output.css_folder %><%%= project.output.css_filename %>']
         },
 
         // 5. minify
@@ -171,8 +170,8 @@ module.exports = function(grunt) {
                 noAdvanced: true
             },
             build: {
-                src: ['<%= project.output.folder %><%= project.output.css_folder %><%= project.output.css_filename %>'],
-                dest: '<%= project.output.folder %><%= project.output.css_folder %><%= project.output.css_filename_minified %>'
+                src: ['<%%= project.output.folder %><%%= project.output.css_folder %><%%= project.output.css_filename %>'],
+                dest: '<%%= project.output.folder %><%%= project.output.css_folder %><%%= project.output.css_filename_minified %>'
             }
         },
 
@@ -190,11 +189,11 @@ module.exports = function(grunt) {
                 files: [
                     {
                         expand: true,
-                        cwd: '<%= project.jade_dir %>',
+                        cwd: '<%%= project.jade_dir %>',
                         src: [
                             '*.jade'
                         ],
-                        dest: '<%= project.output.folder %>',
+                        dest: '<%%= project.output.folder %>',
                         ext: '.html',
                         flatten: true
                     }
@@ -212,24 +211,24 @@ module.exports = function(grunt) {
                 files : [{
                     expand: true,
                     src: [
-                        '<%= project.output.folder %><%= project.output.css_folder %><%= project.output.css_filename %>',
-                        '<%= project.output.folder %><%= project.output.css_folder %><%= project.output.css_filename_minified %>'
+                        '<%%= project.output.folder %><%%= project.output.css_folder %><%%= project.output.css_filename %>',
+                        '<%%= project.output.folder %><%%= project.output.css_folder %><%%= project.output.css_filename_minified %>'
                     ],
-                    dest: '<%= project.deploy.folder %>'
+                    dest: '<%%= project.deploy.folder %>'
                 }]
             },
             images: {
                 files : [{
                     expand: true,
-                    src: ['<%= project.images_dir %>**'],
-                    dest: '<%= project.deploy.folder %>'
+                    src: ['<%%= project.images_dir %>**'],
+                    dest: '<%%= project.deploy.folder %>'
                 }]
             },
             html: {
                 files : [{
                     expand: true,
-                    src: ['<%= project.output.folder %>*.html'],
-                    dest: '<%= project.deploy.folder %>'
+                    src: ['<%%= project.output.folder %>*.html'],
+                    dest: '<%%= project.deploy.folder %>'
                 }]
             },
             js: {
@@ -237,24 +236,24 @@ module.exports = function(grunt) {
                     expand: true,
                     src: [
                         // custom scripts
-                        '<%= project.output.folder %><%= project.output.js_folder %><%= project.output.js_filename %>',
+                        '<%%= project.output.folder %><%%= project.output.js_folder %><%%= project.output.js_filename %>',
                         // vendor scripts
-                        '<%= project.output.folder %><%= project.output.js_folder %><%= project.output.js_vendor_filename %>',
+                        '<%%= project.output.folder %><%%= project.output.js_folder %><%%= project.output.js_vendor_filename %>',
                         // combined scripts
-                        '<%= project.output.folder %><%= project.output.js_folder %><%= project.output.js_master_filename %>',
+                        '<%%= project.output.folder %><%%= project.output.js_folder %><%%= project.output.js_master_filename %>',
                         // minified
-                        '<%= project.output.folder %><%= project.output.js_folder %><%= project.output.js_filename_minified %>',
-                        '<%= project.output.folder %><%= project.output.js_folder %><%= project.output.js_vendor_filename_minified %>',
-                        '<%= project.output.folder %><%= project.output.js_folder %><%= project.output.js_master_filename_minified %>',
+                        '<%%= project.output.folder %><%%= project.output.js_folder %><%%= project.output.js_filename_minified %>',
+                        '<%%= project.output.folder %><%%= project.output.js_folder %><%%= project.output.js_vendor_filename_minified %>',
+                        '<%%= project.output.folder %><%%= project.output.js_folder %><%%= project.output.js_master_filename_minified %>',
                     ],
-                    dest: '<%= project.deploy.folder %>'
+                    dest: '<%%= project.deploy.folder %>'
                 }]
             },
             misc: {
                 files : [{
                     expand: true,
-                    src: ['<%= project.misc_dir %>**'],
-                    dest: '<%= project.deploy.folder %>'
+                    src: ['<%%= project.misc_dir %>**'],
+                    dest: '<%%= project.deploy.folder %>'
                 }]
             },
         },
@@ -263,14 +262,14 @@ module.exports = function(grunt) {
         usebanner: {
             options: {
                 position: 'top',
-                banner: '<%= banner %>'
+                banner: '<%%= banner %>'
             },
             build: {
                 src: [
-                    '<%= project.output.folder %><%= project.output.css_folder %><%= project.output.css_filename %>',
-                    '<%= project.output.folder %><%= project.output.css_folder %><%= project.output.css_filename_minified %>',
-                    '<%= project.output.folder %><%= project.output.js_folder %><%= project.output.js_filename %>',
-                    '<%= project.output.folder %><%= project.output.js_folder %><%= project.output.js_filename_minified %>'
+                    '<%%= project.output.folder %><%%= project.output.css_folder %><%%= project.output.css_filename %>',
+                    '<%%= project.output.folder %><%%= project.output.css_folder %><%%= project.output.css_filename_minified %>',
+                    '<%%= project.output.folder %><%%= project.output.js_folder %><%%= project.output.js_filename %>',
+                    '<%%= project.output.folder %><%%= project.output.js_folder %><%%= project.output.js_filename_minified %>'
                 ]
             }
         },
@@ -278,23 +277,23 @@ module.exports = function(grunt) {
         // watch file changes
         watch: {
             sass: {
-                files: ['<%= project.sass_dir %>*.scss','<%= project.sass_dir %>**/*.scss'],
+                files: ['<%%= project.sass_dir %>*.scss','<%%= project.sass_dir %>**/*.scss'],
                 tasks: ['sass:build', 'autoprefixer:build']
             },
             jade: {
-                files: [ '<%= project.jade_dir %>*.jade', '<%= project.jade_dir %>**/*.jade'],
+                files: [ '<%%= project.jade_dir %>*.jade', '<%%= project.jade_dir %>**/*.jade'],
                 tasks: ['jade:build']
             },
             images: {
-                files: ['<%= project.images_dir %>*.*', '<%= project.images_dir %>**/*.*'],
+                files: ['<%%= project.images_dir %>*.*', '<%%= project.images_dir %>**/*.*'],
                 tasks: ['copy:images']
             },
             js: {
-                files: '<%= concat.build.src %>',
+                files: '<%%= concat.build.src %>',
                 tasks: ['concat:build']
             },
             js_vendors: {
-                files: '<%= concat.deploy.src %>',
+                files: '<%%= concat.deploy.src %>',
                 tasks: ['concat:deploy']
             }
         }

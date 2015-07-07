@@ -1,6 +1,6 @@
 <?php
 
-function arrow_theme() {
+function <%= projectName.underscored %>_theme() {
 
 
   // create custom user-login.tpl.php
@@ -10,10 +10,10 @@ function arrow_theme() {
 
   $items['user_login'] = array(
     'render element' => 'form',
-    'path' => drupal_get_path('theme', 'arrow') . '/templates',
+    'path' => drupal_get_path('theme', '<%= projectName.underscored %>') . '/templates',
       'template' => 'user-login',
       'preprocess functions' => array(
-        'arrow_preprocess_user_login'
+        '<%= projectName.underscored %>_preprocess_user_login'
       ),
   );
 
@@ -29,7 +29,7 @@ function arrow_theme() {
  * Implements template_preprocess_html().
  *
  */
-//function arrow_preprocess_html(&$variables) {
+//function <%= projectName.underscored %>_preprocess_html(&$variables) {
 //  // Add conditional CSS for IE. To use uncomment below and add IE css file
 //  drupal_add_css(path_to_theme() . '/css/ie.css', array('weight' => CSS_THEME, 'browsers' => array('!IE' => FALSE), 'preprocess' => FALSE));
 //
@@ -41,20 +41,22 @@ function arrow_theme() {
  * Implements template_preprocess_page
  *
  */
-//function arrow_preprocess_page(&$variables) {
-//}
+function <%= projectName.underscored %>_preprocess_page(&$variables) {
+  // https://www.drupal.org/node/1427564
+  drupal_add_js('jQuery.extend(Drupal.settings, { "pathToTheme": "' . path_to_theme() . '" });', 'inline');
+}
 
 /**
  * Implements template_preprocess_node
  *
  */
-//function arrow_preprocess_node(&$variables) {
+//function <%= projectName.underscored %>_preprocess_node(&$variables) {
 //}
 
 /**
  * Implements hook_preprocess_block()
  */
-//function arrow_preprocess_block(&$variables) {
+//function <%= projectName.underscored %>_preprocess_block(&$variables) {
 //  // Add wrapping div with global class to all block content sections.
 //  $variables['content_attributes_array']['class'][] = 'block-content';
 //
@@ -94,28 +96,28 @@ function arrow_theme() {
 //  }
 //}
 
-//function arrow_preprocess_views_view(&$variables) {
+//function <%= projectName.underscored %>_preprocess_views_view(&$variables) {
 //}
 
 /**
  * Implements template_preprocess_panels_pane().
  *
  */
-//function arrow_preprocess_panels_pane(&$variables) {
+//function <%= projectName.underscored %>_preprocess_panels_pane(&$variables) {
 //}
 
 /**
  * Implements template_preprocess_views_views_fields().
  *
  */
-//function arrow_preprocess_views_view_fields(&$variables) {
+//function <%= projectName.underscored %>_preprocess_views_view_fields(&$variables) {
 //}
 
 /**
  * Implements theme_form_element_label()
  * Use foundation tooltips
  */
-//function arrow_form_element_label($variables) {
+//function <%= projectName.underscored %>_form_element_label($variables) {
 //  if (!empty($variables['element']['#title'])) {
 //    $variables['element']['#title'] = '<span class="secondary label">' . $variables['element']['#title'] . '</span>';
 //  }
@@ -128,7 +130,7 @@ function arrow_theme() {
 /**
  * Implements hook_preprocess_button().
  */
-//function arrow_preprocess_button(&$variables) {
+//function <%= projectName.underscored %>_preprocess_button(&$variables) {
 //  $variables['element']['#attributes']['class'][] = 'button';
 //  if (isset($variables['element']['#parents'][0]) && $variables['element']['#parents'][0] == 'submit') {
 //    $variables['element']['#attributes']['class'][] = 'secondary';
@@ -139,7 +141,7 @@ function arrow_theme() {
  * Implements hook_form_alter()
  * Example of using foundation sexy buttons
  */
-// function arrow_form_alter(&$form, &$form_state, $form_id) {
+// function <%= projectName.underscored %>_form_alter(&$form, &$form_state, $form_id) {
 //   // Sexy submit buttons
 //   if (!empty($form['actions']) && !empty($form['actions']['submit'])) {
 //     $classes = (is_array($form['actions']['submit']['#attributes']['class']))
@@ -154,7 +156,7 @@ function arrow_theme() {
  * Implements hook_form_FORM_ID_alter()
  * Example of using foundation sexy buttons on comment form
  */
-//function arrow_form_comment_form_alter(&$form, &$form_state) {
+//function <%= projectName.underscored %>_form_comment_form_alter(&$form, &$form_state) {
   // Sexy preview buttons
 //  $classes = (is_array($form['actions']['preview']['#attributes']['class']))
 //    ? $form['actions']['preview']['#attributes']['class']
@@ -168,11 +170,11 @@ function arrow_theme() {
  * Add placeholder attribute to the Search form
  * Implements hook_form_FORM_ID_alter()
 */
-// function arrow_form_search_block_form_alter(&$form, &$form_state) {
+// function <%= projectName.underscored %>_form_search_block_form_alter(&$form, &$form_state) {
 //   $form['search_block_form']['#attributes']['placeholder'] = "I'm looking for...";
 // }
 
-// function arrow_preprocess_search_block_form(&$variables) {
+// function <%= projectName.underscored %>_preprocess_search_block_form(&$variables) {
 //   // dpm($variables);
 // }
 
@@ -216,7 +218,7 @@ function THEMENAME_preprocess_views_view_fields(&$variables) {
 /**
  * Implements hook_css_alter().
  */
-//function arrow_css_alter(&$css) {
+//function <%= projectName.underscored %>_css_alter(&$css) {
 //  // Always remove base theme CSS.
 //  $theme_path = drupal_get_path('theme', 'zurb_foundation');
 //
@@ -230,7 +232,7 @@ function THEMENAME_preprocess_views_view_fields(&$variables) {
 /**
  * Implements hook_js_alter().
  */
-function arrow_js_alter(&$js) {
+function <%= projectName.underscored %>_js_alter(&$js) {
  // Always remove base theme JS.
  $theme_path = drupal_get_path('theme', 'zurb_foundation');
 

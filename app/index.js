@@ -2,8 +2,22 @@
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 var yosay = require('yosay');
+var _s = require('underscore.string');
+
+
 
 module.exports = yeoman.generators.Base.extend({
+
+  constructor: function () {
+
+    yeoman.generators.Base.apply(this, arguments);
+
+    // --skip-install, don't run npm or bower install
+    this.option('skip-install');
+  },
+
+
+
   initializing: function () {
     this.pkg = require('../package.json');
   },
@@ -19,23 +33,47 @@ module.exports = yeoman.generators.Base.extend({
 
     var prompts = [
       {
-        type: 'confirm',
-        name: 'someOption',
-        message: 'Would you like to enable this option?',
-        default: true
+        type    : 'input',
+        name    : 'project',
+        message : 'what are you calling your project?',
+        default : _s.titleize(this.appname) // Default to current folder name
       },
       {
-        type: 'input',
-        name: 'project_name',
-        message: 'What\'s the project name?',
-        default: this.appname
+        type    : 'input',
+        name    : 'description',
+        message : 'what\'s it about?',
+        default : 'Custom sub-theme based on the the Zurb Foundation base theme.'
+      },
+      {
+        type      : 'input',
+        name      : 'customGlobal',
+        message   : 'do you wanna customize the JS global variable?',
+        optional  : true,
+        default   : _s.classify(this.appname)
       }
     ];
 
     this.prompt(prompts, function (props) {
       this.props = props;
+
+      this.projectName = {
+        raw         : props.project,                  // Que Onda Guero
+        title       : _s.titleize(props.project),     // Que Onda Guero
+        underscored : _s.underscored(props.project),  // que_onda_guero
+        slug        : _s.slugify(props.project),      // que-onda-guero
+        classed     : _s.classify(props.project)      // QueOndaGuero
+      };
+
+      this.description = props.description;
+
+      if (props.customGlobal) {
+        this.customGlobal = props.customGlobal;
+      }
+
       // To access props later use this.props.someOption;
-      console.log(props);
+      this.log(yosay(
+        chalk.white('cool. building ' + props.project + '\'s project structure now...')
+      ));
 
       done();
     }.bind(this));
@@ -82,16 +120,10 @@ module.exports = yeoman.generators.Base.extend({
       // individual files
       // ----------------------------------------
       // .info file
-      this.fs.copy(
-        this.templatePath('arrow.info'),
-        this.destinationPath('arrow.info')
-      );
+      this.template('arrow.info');
 
       // bower file
-      this.fs.copy(
-        this.templatePath('bower.json'),
-        this.destinationPath('bower.json')
-      );
+      this.template('bower.json');
 
       // gitignore
       this.fs.copy(
@@ -100,10 +132,7 @@ module.exports = yeoman.generators.Base.extend({
       );
 
       // gruntfile
-      this.fs.copy(
-        this.templatePath('Gruntfile.js'),
-        this.destinationPath('Gruntfile.js')
-      );
+      this.template('Gruntfile.js');
 
       // license
       this.fs.copy(
@@ -112,28 +141,16 @@ module.exports = yeoman.generators.Base.extend({
       );
 
       // readme
-      this.fs.copy(
-        this.templatePath('README.md'),
-        this.destinationPath('README.md')
-      );
+      this.template('README.md');
 
       // package.json
-      this.fs.copy(
-        this.templatePath('package.json'),
-        this.destinationPath('package.json')
-      );
+      this.template('package.json');
 
       // template.php
-      this.fs.copy(
-        this.templatePath('template.php'),
-        this.destinationPath('template.php')
-      );
+      this.template('template.php');
 
       // theme-settings.php
-      this.fs.copy(
-        this.templatePath('theme-settings.php'),
-        this.destinationPath('theme-settings.php')
-      );
+      this.template('theme-settings.php');
 
 
       // folders
@@ -149,11 +166,26 @@ module.exports = yeoman.generators.Base.extend({
         this.templatePath('jade'),
         this.destinationPath('jade')
       );
+      this.template('jade/index.jade');
 
       // js
-      this.fs.copy(
-        this.templatePath('js'),
-        this.destinationPath('js')
+      // pass in the project name
+      var js_settings = {
+        projectName: this.projectName
+      };
+      // use custom global if set
+      if (this.customGlobal) {
+        js_settings.customGlobal = this.customGlobal;
+      }
+      this.fs.copyTpl(
+        this.templatePath('js/arrow/init.js'),
+        this.destinationPath('js/' + this.projectName.slug + '/init.js'),
+        js_settings
+      );
+      this.fs.copyTpl(
+        this.templatePath('js/arrow/sample.js'),
+        this.destinationPath('js/' + this.projectName.slug + '/sample.js'),
+        js_settings
       );
 
       // misc
@@ -179,14 +211,13 @@ module.exports = yeoman.generators.Base.extend({
   },
 
   install: function () {
-    // this.installDependencies();
-  },
+    if (!this.options['skip-install']) {
+      this.installDependencies();
+    }
 
-  method1: function () {
-    console.log('method1');
-  },
-
-  method2: function () {
-    console.log('method2');
+    this.log(yosay(
+      'do work son'
+    ));
   }
+
 });

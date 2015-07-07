@@ -1,6 +1,6 @@
-# arrow
+# <%= projectName.title %>
 
-drupal sub-theme starter, based on Zurb Foundation's sub-theme starter
+<%= description %>
 **requires node, grunt, and bower**
 
 Zurb Foundation Drupal theme: https://www.drupal.org/project/zurb_foundation

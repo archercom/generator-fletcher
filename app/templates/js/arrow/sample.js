@@ -5,7 +5,13 @@
      * Sample - a sample JS module file for our project
      */
 
-    strath.modules.sample = {
+
+    <% if (customGlobal) { %>
+    <%= customGlobal %>.modules.sample = {
+    <% }  else { %>
+    <%= projectName.classed %>.modules.sample = {
+    <% } %>
+
 
         init: function() {
             console.log('hello from: sample.js');

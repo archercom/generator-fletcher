@@ -1,5 +1,5 @@
-name = arrow
-description = Custom sub-theme based on the the Zurb Foundation base theme.
+name = <%= projectName.slug %>
+description = <%= description %>
 screenshot = images/screenshot.png
 
 core = 7.x

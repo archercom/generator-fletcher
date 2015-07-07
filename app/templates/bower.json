@@ -1,11 +1,11 @@
 {
-  "name": "monte",
-  "version": "0.0.1",
-  "homepage": "http://luisrosar.io",
+  "name": "<%= projectName.slug %>",
+  "version": "0.1.0",
+  "homepage": "http://archercom.com",
   "authors": [
-    "luis rosario //zapo"
+    "luis rosario [zapo]"
   ],
-  "description": "web project starter",
+  "description": "<%= description %>",
   "license": "MIT",
   "ignore": [
     "**/.*",

@@ -1,17 +1,9 @@
 {
-  "name": "arrow",
-  "description": "web project starter",
-  "author": "Arhcer Communications [luis rosario //zapo]",
+  "name": "<%= projectName.slug %>",
+  "description": "<%= description %>",
+  "author": "Arhcer Communications",
   "homepage": "http://archercom.com/",
   "version": "0.1.0",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/aztec8/arrow.git"
-  },
-  "license": {
-    "type": "MIT",
-    "url": "https://github.com/aztec8/arrow/blob/master/LICENSE"
-  },
   "scripts": {
     "postinstall": "bower install && grunt build"
   },
