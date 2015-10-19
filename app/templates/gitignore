@@ -2,6 +2,4 @@ build
 node_modules
 bower_components
 *.html
-js/main.js.map
-js/scripts.js.map
-js/vendors.js.map
+*.map

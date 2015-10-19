@@ -1,11 +1,11 @@
 {
   "name": "<%= projectName.slug %>",
-  "version": "0.1.0",
-  "homepage": "http://archercom.com",
+  "description": "<%= description %>",
   "authors": [
     "luis rosario [zapo]"
   ],
-  "description": "<%= description %>",
+  "homepage": "http://archercom.com",
+  "version": "0.1.0",
   "license": "MIT",
   "ignore": [
     "**/.*",
@@ -15,9 +15,8 @@
     "tests"
   ],
   "dependencies": {
-    "foundation": "~5.5.2",
-    "greensock": "~1.17.0",
+    "foundation": "~5.5.3",
     "konami-js": "*",
-    "howler": "~1.1.26"
+    "howler.js": "howler#~1.1.27"
   }
 }

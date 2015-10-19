@@ -1,16 +1,13 @@
-@import "vars";
-@import "settings";
 @import "mixins";
+@import "theme/vars";
+@import "theme/settings";
+
 // vendor
 @import "bower_components/foundation/scss/normalize.scss";
 @import "bower_components/foundation/scss/foundation.scss";
 
-
 // custom
-html {
-    -webkit-font-smoothing: antialiased;
-}
-::selection {
-    background: $red;
-    text-shadow: none;
-}
+@import "utilities";
+@import "drupal";
+@import "theme/base";
+@import "theme/colors";

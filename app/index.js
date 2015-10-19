@@ -84,9 +84,10 @@ module.exports = yeoman.generators.Base.extend({
     // general settings
     // ============================================================
     projectfiles: function () {
+      // gitignore
       this.fs.copy(
-        this.templatePath('editorconfig'),
-        this.destinationPath('.editorconfig')
+        this.templatePath('gitignore'),
+        this.destinationPath('.gitignore')
       );
     },
 
@@ -110,10 +111,10 @@ module.exports = yeoman.generators.Base.extend({
         this.templatePath('csscomb.json'),
         this.destinationPath('scss/.csscomb.json')
       );
-      // scss/.csslintrc
+      // scss/.stylelintrc
       this.fs.copy(
-        this.templatePath('csslintrc'),
-        this.destinationPath('scss/.csslintrc')
+        this.templatePath('stylelintrc'),
+        this.destinationPath('scss/.stylelintrc')
       );
 
 
@@ -132,12 +133,6 @@ module.exports = yeoman.generators.Base.extend({
 
       // bower file
       this.template('bower.json');
-
-      // gitignore
-      this.fs.copy(
-        this.templatePath('gitignore'),
-        this.destinationPath('.gitignore')
-      );
 
       // gruntfile
       this.template('Gruntfile.js');
@@ -175,6 +170,7 @@ module.exports = yeoman.generators.Base.extend({
         this.destinationPath('jade')
       );
       this.template('jade/index.jade');
+      this.template('jade/00-kitchen-sink.jade');
 
       // js
       // pass in the project name

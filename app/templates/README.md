@@ -18,7 +18,6 @@ $ python -m SimpleHTTPServer 8080  # optional port number argument
 ```
 
 ## Current Stack
-- GreenSock (TweenMax)
 - Howler
 - Konami
 - Zurb Foundation (jQuery/Fastclick/Modernizr)

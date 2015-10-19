@@ -1,25 +1,23 @@
 (function ($, window, document, undefined) {
-    'use strict';
+  'use strict';
 
-    /**
-     * Sample - a sample JS module file for our project
-     */
+  /**
+   * Sample - a sample JS module file for our project
+   */
 
+  <% if (customGlobal) { %>
+  <%= customGlobal %>.modules.sample = {
+  <% }  else { %>
+  <%= projectName.classed %>.modules.sample = {
+  <% } %>
 
-    <% if (customGlobal) { %>
-    <%= customGlobal %>.modules.sample = {
-    <% }  else { %>
-    <%= projectName.classed %>.modules.sample = {
-    <% } %>
+    init: function() {
+      console.log('hello from: sample.js');
+      // every module should have an init function
+      // the init() should have a test built-in if the JS is designed to
+      // run on a certain page
+    }
 
-
-        init: function() {
-            console.log('hello from: sample.js');
-            // every module should have an init function
-            // the init() should have a test built-in if the JS is designed to
-            // run on a certain page
-        }
-
-    };
+  };
 
 }($ || jQuery, window, window.document));

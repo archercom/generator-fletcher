@@ -34,16 +34,10 @@
  * @ingroup themeable
  */
 ?>
-<div class="page-main">
-  <div class="main-column">
-    <div class="page-section">
-      <div class="row">
-        <div class="columns medium-10 medium-centered">
-          <div class="profile"<?php print $attributes; ?>>
-            <?php print render($user_profile); ?>
-          </div>
-        </div>
-      </div>
+<div class="row page-section">
+  <div class="columns medium-10 medium-centered">
+    <div class="profile"<?php print $attributes; ?>>
+      <?php print render($user_profile); ?>
     </div>
   </div>
 </div>

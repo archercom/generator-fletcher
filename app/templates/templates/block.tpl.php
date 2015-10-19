@@ -42,7 +42,7 @@
  */
 ?>
 <?php if ($block->delta != 'main'): ?>
-<section class="<?php print $classes; ?>"<?php print $attributes; ?>>
+<div class="<?php print $classes; ?>"<?php print $attributes; ?>>
   <?php endif; ?>
 
   <?php print render($title_prefix); ?>
@@ -55,4 +55,4 @@
   <?php print $content ?>
   <?php !empty($content_attributes) ? print '</div>' : ''; ?>
 
-  <?php $block->delta != 'main' ? print '</section>' : ''; ?>
+  <?php $block->delta != 'main' ? print '</div>' : ''; ?>
