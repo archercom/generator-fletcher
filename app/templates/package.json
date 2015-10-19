@@ -3,7 +3,7 @@
   "description": "<%= description %>",
   "author": "Archer Communications [luis rosario //zapo]",
   "homepage": "http://archercom.com/",
-  "version": "0.2.0",
+  "version": "0.1.0",
   "license": {
     "type": "MIT",
     "url": "https://github.com/archercom/arrowhead/blob/master/LICENSE"

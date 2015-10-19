@@ -1,6 +1,6 @@
 {
   "name": "generator-fletcher",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Drupal theme starter, Foundation sub-theme",
   "license": "MIT",
   "main": "app/index.js",
