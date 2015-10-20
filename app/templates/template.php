@@ -68,6 +68,18 @@ function <%= projectName.underscored %>_js_alter(&$js) {
 }
 
 
+/**
+ * Implements theme_links() targeting the main menu topbar.
+ * Override base template, which would add the class of "left",which  we don't need
+ */
+function <%= projectName.underscored %>__topbar_main_menu($variables) {
+  // We need to fetch the links ourselves because we need the entire tree.
+  $links = menu_tree_output(menu_tree_all_data(variable_get('menu_main_links_source', 'main-menu')));
+  $output = _zurb_foundation_links($links);
+
+  return '<ul' . drupal_attributes($variables['attributes']) . '>' . $output . '</ul>';
+}
+
 
 
 
