@@ -70,36 +70,6 @@
         ];
         // file paths are different for Drupal, sites/all/themes/
         <% if (customGlobal) { %>
-        // load Howler
-        if (<%= customGlobal %>.sound === undefined) {
-          <%= customGlobal %>.sound = new Howl({
-            urls: [mp3s[Math.floor(Math.random() * 3)]]
-          }).play();
-        } else {
-          // play new sound. stop other one
-          <%= customGlobal %>.sound.unload();
-          <%= customGlobal %>.sound = new Howl({
-            urls: [mp3s[Math.floor(Math.random() * 3)]]
-          }).play();
-        }
-        <% }  else { %>
-        // load Howler
-        if (<%= projectName.classed %>.sound === undefined) {
-          <%= projectName.classed %>.sound = new Howl({
-            urls: [mp3s[Math.floor(Math.random() * 3)]]
-          }).play();
-        } else {
-          // play new sound. stop other one
-          <%= projectName.classed %>.sound.unload();
-          <%= projectName.classed %>.sound = new Howl({
-            urls: [mp3s[Math.floor(Math.random() * 3)]]
-          }).play();
-        }
-        <% } %>
-
-
-
-        <% if (customGlobal) { %>
         if (<%= customGlobal %>.utils.drupal_test()) {
         <% }  else { %>
         if (<%= projectName.classed %>.utils.drupal_test()) {
@@ -109,8 +79,8 @@
           }
         }
 
-        // load Howler
         <% if (customGlobal) { %>
+        // load Howler
         if (<%= customGlobal %>.sound === undefined) {
           <%= customGlobal %>.sound = new Howl({
             urls: [mp3s[Math.floor(Math.random() * 3)]]
@@ -123,6 +93,7 @@
           }).play();
         }
         <% }  else { %>
+        // load Howler
         if (<%= projectName.classed %>.sound === undefined) {
           <%= projectName.classed %>.sound = new Howl({
             urls: [mp3s[Math.floor(Math.random() * 3)]]
@@ -135,6 +106,7 @@
           }).play();
         }
         <% } %>
+
       }
     },
 
