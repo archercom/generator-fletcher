@@ -92,7 +92,7 @@ function <%= projectName.underscored %>_js_alter(&$js) {
 /**
  * Implements template_preprocess_page
  */
-function lyons_national_bank_preprocess_page(&$variables) {
+function <%= projectName.underscored %>_preprocess_page(&$variables) {
   // https://www.drupal.org/node/1427564
   drupal_add_js('jQuery.extend(Drupal.settings, { "themePath": "' . path_to_theme() . '" });', 'inline');
 }
