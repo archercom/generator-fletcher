@@ -20,7 +20,8 @@ stylesheets[all][] = css/foundation.min.css
 
 ; JS
 ; ----------------------------------------
-scripts[] = js/scripts.js
+scripts[] = js/vendors.js
+scripts[] = js/main.js
 
 ; Block loading of Foundation js
 ;scripts[] = js/libs.min.js
