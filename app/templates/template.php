@@ -9,6 +9,18 @@
 //
 
 
+// 00. Load up other things for basic admin stuff
+// ============================================================
+function _<%= projectName.underscored %>_load() {
+  $themepath = drupal_get_path('theme', '<%= projectName.underscored %>');
+  include $themepath . '/inc/elements.inc';
+  // include $themepath . '/inc/form.inc';
+  include $themepath . '/inc/menu.inc';
+}
+
+_<%= projectName.underscored %>_load();
+
+
 
 
 
@@ -23,10 +35,10 @@ function <%= projectName.underscored %>_theme() {
 
   $items['user_login'] = array(
     'render element' => 'form',
-    'path' => drupal_get_path('theme', 'arrow') . '/templates',
+    'path' => drupal_get_path('theme', '<%= projectName.underscored %>') . '/templates',
       'template' => 'user-login',
       'preprocess functions' => array(
-        'arrow_preprocess_user_login'
+        '<%= projectName.underscored %>_preprocess_user_login'
       ),
   );
 

@@ -57,6 +57,27 @@
       },
 
       /**
+       * copy text to clipboard
+       * clipboard.js
+       */
+      clipboard: function () {
+        var clipboards = new Clipboard('[data-clipboard]');
+
+        clipboards.on('success', function(e) {
+            e.clearSelection();
+
+            // console.info('Action:', e.action);
+            console.info('Text:', e.text);
+            // console.info('Trigger:', e.trigger);
+        });
+
+        clipboards.on('error', function(e) {
+            console.error('Action:', e.action);
+            console.error('Trigger:', e.trigger);
+        });
+      },
+
+      /**
        * Easter egg
        * @return {N/A}
        */
@@ -118,6 +139,9 @@
 
       // add smooth scroll
       this.utils.smooth_scroll();
+
+      // add clipboard functionality
+      this.utils.clipboard();
 
       // initialize all modules
       for (var module in this.modules) {

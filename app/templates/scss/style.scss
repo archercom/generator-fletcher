@@ -1,13 +1,16 @@
 @import "mixins";
 @import "theme/vars";
-@import "theme/settings";
 
-// vendor
-@import "bower_components/foundation/scss/normalize.scss";
-@import "bower_components/foundation/scss/foundation.scss";
+// foundation
+@import "theme/settings";  // custom theme settings
+@import "bower_components/foundation-sites/scss/foundation";
+@import "bower_components/motion-ui/motion-ui";
+@include foundation-everything;  // build with regular grid
+
+// archer
+@import "archer";
+@import "drupal";
+@import "utilities";
 
 // custom
-@import "utilities";
-@import "drupal";
-@import "theme/base";
-@import "theme/colors";
+@import "theme/theme";

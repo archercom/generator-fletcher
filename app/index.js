@@ -84,6 +84,8 @@ module.exports = yeoman.generators.Base.extend({
     // general settings
     // ============================================================
     projectfiles: function () {
+      // hidden files can't be copied directly, we must rename them without the
+      // leading dot and copy them into the correct place with the dot in place
       // gitignore
       this.fs.copy(
         this.templatePath('gitignore'),
@@ -94,28 +96,6 @@ module.exports = yeoman.generators.Base.extend({
     // setting up arrowhead
     // ============================================================
     app: function () {
-
-
-      // hidden files
-      //
-      // hidden files can't be copied directly, we must rename them without the
-      // leading dot and copy them into the correct place with the dot in place
-      // ----------------------------------------
-      // js/jshintrc
-      this.fs.copy(
-        this.templatePath('jshintrc'),
-        this.destinationPath('js/.jshintrc')
-      );
-      // scss/.csscomb.json
-      this.fs.copy(
-        this.templatePath('csscomb.json'),
-        this.destinationPath('scss/.csscomb.json')
-      );
-      // scss/.stylelintrc
-      this.fs.copy(
-        this.templatePath('stylelintrc'),
-        this.destinationPath('scss/.stylelintrc')
-      );
 
 
       // individual files
@@ -137,12 +117,6 @@ module.exports = yeoman.generators.Base.extend({
       // gruntfile
       this.template('Gruntfile.js');
 
-      // license
-      this.fs.copy(
-        this.templatePath('LICENSE'),
-        this.destinationPath('LICENSE')
-      );
-
       // readme
       this.template('README.md');
 
@@ -158,6 +132,12 @@ module.exports = yeoman.generators.Base.extend({
 
       // folders
       // ----------------------------------------
+      // fonts
+      this.fs.copy(
+        this.templatePath('fonts'),
+        this.destinationPath('fonts')
+      );
+
       // images
       this.fs.copy(
         this.templatePath('images'),
@@ -165,12 +145,14 @@ module.exports = yeoman.generators.Base.extend({
       );
 
       // jade
+      // we copy the entire directory first
       this.fs.copy(
         this.templatePath('jade'),
         this.destinationPath('jade')
       );
+      // and re-template these 2 specifically
       this.template('jade/index.jade');
-      this.template('jade/00-kitchen-sink.jade');
+      this.template('jade/00--kitchen-sink.jade');
 
       // js
       // pass in the project name

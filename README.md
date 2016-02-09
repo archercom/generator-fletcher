@@ -1,45 +1,39 @@
-# generator-fletcher [![Build Status](https://secure.travis-ci.org/aztec8/generator-fletcher.png?branch=master)](https://travis-ci.org/aztec8/generator-fletcher)
-
+# generator-fletcher
 > [Yeoman](http://yeoman.io) generator
+
 
 
 ## Getting Started
 
-### What is Yeoman?
-
-Trick question. It's not a thing. It's this guy:
-
-![](http://i.imgur.com/JHaAlBJ.png)
-
-Basically, he wears a top hat, lives in your computer, and waits for you to tell him what kind of application you wish to create.
-
-Not every new computer comes with a Yeoman pre-installed. He lives in the [npm](https://npmjs.org) package repository. You only have to ask for him once, then he packs up and moves into your hard drive. *Make sure you clean up, he likes new and shiny things.*
+Make sure Yeoman is installed
 
 ```bash
 npm install -g yo
 ```
 
+
 ### Yeoman Generators
 
-Yeoman travels light. He didn't pack any generators when he moved in. You can think of a generator like a plug-in. You get to choose what type of application you wish to create, such as a Backbone application or even a Chrome extension.
-
-To install generator-fletcher from npm, run:
+To install this generator, clone the repo to your local box.
+Run `npm link` inside the repo so Yeoman can find it
 
 ```bash
-npm install -g generator-fletcher
+git clone git@github.com:archercom/generator-fletcher.git
+cd generator-fletcher
+npm link
 ```
 
-Finally, initiate the generator:
+### Initiate the generator
+
+This generator is designed to get a Drupal sub-theme going for you. It makes a templated version of [arrowhead](https://github.com/archercom/arrowhead)
+You must create theme's folder first and run yeoman from there.
 
 ```bash
+cd sites/all/themes/
+mkdir new-theme
+cd new-theme
 yo fletcher
 ```
-
-### Getting To Know Yeoman
-
-Yeoman has a heart of gold. He's a person with feelings and opinions, but he's very easy to work with. If you think he's too opinionated, he can be easily convinced.
-
-If you'd like to get to know Yeoman better and meet some of his friends, [Grunt](http://gruntjs.com) and [Bower](http://bower.io), check out the complete [Getting Started Guide](https://github.com/yeoman/yeoman/wiki/Getting-Started).
 
 
 ## License
